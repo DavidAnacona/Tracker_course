@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platzi cursos</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main">
+      <section class="title-add">
+        <h1>
+          Mis Cursos de Platzi 💚
+        </h1>
+        <div class="add-course">
+          <span v-if=' error === true'>Debes ingresar informacion</span>
+          <label for="title">Nombre curso</label>
+          <input type="text" class="input-text" id="title" placeholder="Titulo del curso" v-model='course' />
+          <label for="time">Horas dedicadas</label>
+          <input type="number" class="input-text" id="time" placeholder="Horas" v-model='hour' />
+          <input v-on:click='addListCourse' class="button" type="button" value="Guardar curso">
+        </div>
+      </section>
+      <section class="list-courses">
+        <div>
+          <h3>Lista de Cursos</h3>
+          <p v-if=' courses.length === 0'>Aun no has realizado cursos</p>
+          <div class="text-course">
+            <ol v-for='c in courses' v-bind:key='c.title'>
+              Del curso <strong>{{c.title}}</strong> he tomado <strong>{{c.time}}</strong> horas
+            </ol>
+          </div>
+      </section>
+      <footer>
+        <p>
+          Llevas <strong>{{ totalTime }}</strong> horas aprendiendo en Platzi.
+          <b>#NuncaParesDeAprender 💚</b>
+        </p>
+      </footer>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
